@@ -1,12 +1,13 @@
 export default {
 	entry: 'dist/index.js',
-	dest: 'dist/bundles/npm-module-seed.umd.js',
+	dest: 'dist/bundles/ngx-presigned-uploader.umd.js',
 	sourceMap: false,
 	format: 'umd',
-	moduleName: 'ng.npm-module-seed',
+	moduleName: 'ng.ngx-presigned-uploader',
 	globals: {
 		'@angular/core': 'ng.core',
 		'@angular/common': 'ng.common',
+		'@angular/http': 'ng.http',
 		'rxjs/Observable': 'Rx',
 		'rxjs/ReplaySubject': 'Rx',
 		'rxjs/add/operator/map': 'Rx.Observable.prototype',

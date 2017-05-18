@@ -1,8 +1,8 @@
 {
-	"name": "angular-npm-module-seed",
+	"name": "ngx-presigned-uploader",
 	"version": "1.0.0",
 	"description": "Wot!",
-	"main": "bundles/npm-module-seed.umd.min.js",
+	"main": "bundles/ngx-presigned-uploader.umd.min.js",
 	"module": "index.js",
 	"typings": "index.d.ts",
 	"keywords": [
@@ -24,9 +24,12 @@
 		"url": ""
 	},
 	"peerDependencies": {
-		"@angular/core": "^2.4.0",
+		"@angular/common": "^4.1.1",
+    "@angular/core": "^4.1.1",
+    "@angular/http": "^4.1.1",
+    "angular2-uuid": "^1.1.1",
 		"reflect-metadata": "^0.1.8",
-		"rxjs": "^5.0.1",
-		"zone.js": "^0.7.2"
+    "rxjs": "^5.0.3",
+    "zone.js": "^0.7.6"
 	}
 }

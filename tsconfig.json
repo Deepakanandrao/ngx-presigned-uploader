@@ -15,8 +15,14 @@
 			"@angular/common": [
 				"node_modules/@angular/common"
 			],
+			"@angular/http": [
+				"node_modules/@angular/http"
+			],
 			"rxjs/*": [
 				"node_modules/rxjs/*"
+			],
+			"angular2-uuid": [
+				"node_modules/angular2-uuid"
 			]
 		},
 		"rootDir": "src",
