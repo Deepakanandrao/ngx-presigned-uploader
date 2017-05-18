@@ -1,19 +1,16 @@
 {
   "name": "ngx-presigned-uploader",
   "version": "0.1.0",
-  "description": "S3 single file uploader that uses presigned urls.",
+  "description": "Angular2+ single file s3 uploader that uses presigned urls.",
   "keywords": [
-    "angular 2"
+    "angular 2",
+    "angular 4",
+    "angular",
+    "angular 2 file upload",
+    "angular s3 file upload",
+    "angular 2 presigned urls"                
   ],
   "main": "index.js",
-  "scripts": {
-    "clean": "rimraf .tmp && rimraf dist",
-    "transpile": "ngc",
-    "package": "rollup -c",
-    "minify": "./node_modules/uglify-js/bin/uglifyjs dist/bundles/ngx-presigned-uploader.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/ngx-presigned-uploader.umd.min.js",
-    "copy": "cpx './package-dist.json' dist && renamer --find 'package-dist.json' --replace 'package.json' ./dist/*",
-    "build": "npm run clean && npm run transpile && npm run package && npm run minify && npm run copy"
-  },
   "license": "MIT",
   "homepage": "https://github.com/mikeeus/ngx-presigned-uploader",
   "author": {
@@ -26,6 +23,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mikeeus/ngx-presigned-uploader.git"
+  },
+  "scripts": {
+    "clean": "rimraf .tmp && rimraf dist",
+    "transpile": "ngc",
+    "package": "rollup -c",
+    "minify": "./node_modules/uglify-js/bin/uglifyjs dist/bundles/ngx-presigned-uploader.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/ngx-presigned-uploader.umd.min.js",
+    "copy": "cpx './package-dist.json' dist && renamer --find 'package-dist.json' --replace 'package.json' ./dist/*",
+    "build": "npm run clean && npm run transpile && npm run package && npm run minify && npm run copy"
   },
   "dependencies": {
     "@angular/common": "^4.1.1",
