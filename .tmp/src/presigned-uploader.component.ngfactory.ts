@@ -21,11 +21,6 @@ export function View_PresignedUploaderComponent_0(l:any):import0.ɵViewDefinitio
     (l()(),import0.ɵted((null as any),['\n		  '])),
     (l()(),import0.ɵeld(0,(null as any),(null as any),0,'input',[
       [
-        'accept',
-        '.jpeg,.jpg,.png'
-      ]
-      ,
-      [
         'placeholder',
         'Upload file'
       ]
@@ -36,7 +31,12 @@ export function View_PresignedUploaderComponent_0(l:any):import0.ɵViewDefinitio
       ]
 
     ]
-      ,(null as any),[[
+      ,[[
+        8,
+        'accept',
+        0
+      ]
+      ],[[
         (null as any),
         'change'
       ]
@@ -51,7 +51,11 @@ export function View_PresignedUploaderComponent_0(l:any):import0.ɵViewDefinitio
     },(null as any),(null as any))),
     (l()(),import0.ɵted((null as any),['\n	']))
   ]
-  ,(null as any),(null as any));
+  ,(null as any),(ck,v) => {
+    var co:import1.PresignedUploaderComponent = v.component;
+    const currVal_0:any = import0.ɵinlineInterpolate(1,'',co.fileTypes,'');
+    ck(v,1,0,currVal_0);
+  });
 }
 function View_PresignedUploaderComponent_Host_0(l:any):import0.ɵViewDefinition {
   return import0.ɵvid(0,[
@@ -65,7 +69,14 @@ function View_PresignedUploaderComponent_Host_0(l:any):import0.ɵViewDefinition 
 export const PresignedUploaderComponentNgFactory:import0.ComponentFactory<import1.PresignedUploaderComponent> = import0.ɵccf('presigned-uploader',import1.PresignedUploaderComponent,View_PresignedUploaderComponent_Host_0,{
   presignedUrl: 'presignedUrl',
   serverEndpoint: 'serverEndpoint',
-  headers: 'headers'
+  headers: 'headers',
+  s3Prefix: 's3Prefix',
+  fileTypes: 'fileTypes',
+  action: 'action'
 }
-,{uploadState: 'uploadState'},([] as any[]));
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvbWlrbWFrL3dvcmtzcGFjZXMvc3BvdGluaS9uZ3gtcHJlc2lnbmVkLXVwbG9hZGVyL3NyYy9wcmVzaWduZWQtdXBsb2FkZXIuY29tcG9uZW50Lm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL2hvbWUvbWlrbWFrL3dvcmtzcGFjZXMvc3BvdGluaS9uZ3gtcHJlc2lnbmVkLXVwbG9hZGVyL3NyYy9wcmVzaWduZWQtdXBsb2FkZXIuY29tcG9uZW50LnRzIiwibmc6Ly8vaG9tZS9taWttYWsvd29ya3NwYWNlcy9zcG90aW5pL25neC1wcmVzaWduZWQtdXBsb2FkZXIvc3JjL3ByZXNpZ25lZC11cGxvYWRlci5jb21wb25lbnQudHMuUHJlc2lnbmVkVXBsb2FkZXJDb21wb25lbnQuaHRtbCIsIm5nOi8vL2hvbWUvbWlrbWFrL3dvcmtzcGFjZXMvc3BvdGluaS9uZ3gtcHJlc2lnbmVkLXVwbG9hZGVyL3NyYy9wcmVzaWduZWQtdXBsb2FkZXIuY29tcG9uZW50LnRzLlByZXNpZ25lZFVwbG9hZGVyQ29tcG9uZW50X0hvc3QuaHRtbCJdLCJzb3VyY2VzQ29udGVudCI6WyIgIiwiXG5cdFx0ICA8aW5wdXQgdHlwZT1cImZpbGVcIiAoY2hhbmdlKT1cImZpbGVDaGFuZ2UoJGV2ZW50KVwiIHBsYWNlaG9sZGVyPVwiVXBsb2FkIGZpbGVcIiBhY2NlcHQ9XCIuanBlZywuanBnLC5wbmdcIj5cblx0IiwiPHByZXNpZ25lZC11cGxvYWRlcj48L3ByZXNpZ25lZC11cGxvYWRlcj4iXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQ0FBO0lBQ0k7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7SUFBQTtPQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7TUFBQTtNQUFBO01BQW1CO1FBQUE7UUFBQTtNQUFBO01BQW5CO0lBQUE7SUFBb0c7Ozs7OztJQ0R4RztnQkFBQTs7O0lBQUE7Ozs7Ozs7OyJ9
+,{
+  uploadState: 'uploadState',
+  completed: 'completed'
+}
+,([] as any[]));
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvbWlrbWFrL3dvcmtzcGFjZXMvc3BvdGluaS9uZ3gtcHJlc2lnbmVkLXVwbG9hZGVyL3NyYy9wcmVzaWduZWQtdXBsb2FkZXIuY29tcG9uZW50Lm5nZmFjdG9yeS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL2hvbWUvbWlrbWFrL3dvcmtzcGFjZXMvc3BvdGluaS9uZ3gtcHJlc2lnbmVkLXVwbG9hZGVyL3NyYy9wcmVzaWduZWQtdXBsb2FkZXIuY29tcG9uZW50LnRzIiwibmc6Ly8vaG9tZS9taWttYWsvd29ya3NwYWNlcy9zcG90aW5pL25neC1wcmVzaWduZWQtdXBsb2FkZXIvc3JjL3ByZXNpZ25lZC11cGxvYWRlci5jb21wb25lbnQudHMuUHJlc2lnbmVkVXBsb2FkZXJDb21wb25lbnQuaHRtbCIsIm5nOi8vL2hvbWUvbWlrbWFrL3dvcmtzcGFjZXMvc3BvdGluaS9uZ3gtcHJlc2lnbmVkLXVwbG9hZGVyL3NyYy9wcmVzaWduZWQtdXBsb2FkZXIuY29tcG9uZW50LnRzLlByZXNpZ25lZFVwbG9hZGVyQ29tcG9uZW50X0hvc3QuaHRtbCJdLCJzb3VyY2VzQ29udGVudCI6WyIgIiwiXG5cdFx0ICA8aW5wdXQgdHlwZT1cImZpbGVcIiAoY2hhbmdlKT1cImZpbGVDaGFuZ2UoJGV2ZW50KVwiIHBsYWNlaG9sZGVyPVwiVXBsb2FkIGZpbGVcIiBhY2NlcHQ9XCJ7e2ZpbGVUeXBlc319XCI+XG5cdCIsIjxwcmVzaWduZWQtdXBsb2FkZXI+PC9wcmVzaWduZWQtdXBsb2FkZXI+Il0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUNBQTtJQUNJO01BQUE7UUFBQTtRQUFBO01BQUE7O01BQUE7UUFBQTtRQUFBO01BQUE7O0lBQUE7T0FBQTtRQUFBO1FBQUE7UUFBQTtNQUFBO01BQUE7UUFBQTtRQUFBO01BQUE7SUFBQTtNQUFBO01BQUE7TUFBbUI7UUFBQTtRQUFBO01BQUE7TUFBbkI7SUFBQTtJQUFrRzs7OztJQUF2QjtJQUEzRSxTQUEyRSxTQUEzRTs7Ozs7SUNESjtnQkFBQTs7O0lBQUE7Ozs7Ozs7Ozs7Ozs7OzsifQ==
