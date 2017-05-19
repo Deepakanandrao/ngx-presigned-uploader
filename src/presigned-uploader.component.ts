@@ -19,7 +19,7 @@ export interface UploadState {
   error: any;
 }
 
-export type PresignedUploaderActions = 'cancel';
+export type PresignedUploaderAction = 'cancel';
 
 @Component({
 	selector: 'presigned-uploader',
@@ -29,7 +29,6 @@ export type PresignedUploaderActions = 'cancel';
 })
 export class PresignedUploaderComponent implements OnInit {
 	// Either provide a presigned s3 url or a server end point to request one.
-  @Input() presignedUrl: string;
 	@Input() serverEndpoint: string;
   
   // Optional headers for server requests. eg: authentication
@@ -42,7 +41,7 @@ export class PresignedUploaderComponent implements OnInit {
   @Input() fileTypes: string = ".jpeg,.jpg,.png";
 
   // Input an action to cancel the current upload.
-  @Input() action: EventEmitter<PresignedUploaderActions> = new EventEmitter<PresignedUploaderActions>();
+  @Input() action: EventEmitter<PresignedUploaderAction> = new EventEmitter<PresignedUploaderAction>();
 
   // The state of the file being uploaded.
   @Output() uploadState: EventEmitter<UploadState> = new EventEmitter<UploadState>();
@@ -56,49 +55,45 @@ export class PresignedUploaderComponent implements OnInit {
 	constructor(private http: Http) { }
 
 	ngOnInit() {
-    if (!this.presignedUrl && !this.serverEndpoint) {
-      throw "NgxPresignedUploader: Provide a presigned s3 url or a server endpoint to fetch one."
+    if (!this.serverEndpoint) {
+      throw "NgxPresignedUploader: Provide a server endpoint to fetch a presigne url from."
     }
   }
 
   fileChange(event: any) {
     let fileList: FileList = event.target.files;
-    console.log('fileList: ', fileList);
     if (fileList.length > 0) {
       let file: File = fileList[0];
 
-      if (this.presignedUrl) {
-    
-        this.upload(this.presignedUrl, file).subscribe((state: UploadState) => {
-          this.uploadState.emit(state);
-          console.log('uploadState: ', state);
-        });
-      
-      } else {
-
-        let key = `${this.randomKey()}_${file.name}`;
-        if (this.s3Prefix) {
-          key = `${this.s3Prefix}/${key}`;
-        }
-        console.log('key: ', key);
-
-        this.getPresignedUrl(this.serverEndpoint, key, this.headers).subscribe(url => {
-          console.log('presigned url: ', url);
-          this.upload(url, file).subscribe(state => {
-            this.uploadState.emit(state);
-            if (['done', 'success', 'error'].indexOf(state.status) !== -1 ) {
-              this.completedStates.push(state);
-              this.completed.emit(this.completedStates);
-            }
-          });
-        });
+      let key = `${this.randomKey()}_${file.name}`;
+      if (this.s3Prefix) {
+        key = `${this.s3Prefix}/${key}`;
       }
-      
+
+      this.getPresignedUrl(this.serverEndpoint, key, this.headers).subscribe(url => {
+        this.upload(url, file).subscribe(state => {
+          this.uploadState.emit(state);
+          if (['done', 'success', 'error'].indexOf(state.status) !== -1 ) {
+            this.completedStates.push(state);
+            this.completed.emit(this.completedStates);
+          }
+        });
+      });
     }
   }
 
-  private randomKey() {
-    return Math.random().toString(36).substr(2, 5) + '-' + Math.random().toString(36).substr(2, 5);
+  /**
+   * Generate random key using random strings seperated and separators.
+   */
+  private randomKey(sep = '_') {
+    return  this.randS() + sep + this.randS() +  sep + this.randS();
+  }
+
+  /**
+   * Generate random string.
+   */
+  randS() {
+    return Math.random().toString(36).substr(2, 5);
   }
 
 	/**
@@ -107,7 +102,6 @@ export class PresignedUploaderComponent implements OnInit {
    * @param {any} file The file to upload.
    */
   upload(url: string, file: any, method: 'PUT' | 'POST' = 'PUT'): Observable<UploadState> {
-    console.log('upload arguments: ', { url: url, file: file });
     return new Observable(observer => {
       const xhr = new XMLHttpRequest();
       const source = url.split('?')[0];
@@ -200,7 +194,7 @@ export class PresignedUploaderComponent implements OnInit {
         }
       }
 
-      this.action.subscribe((action: PresignedUploaderActions) => {
+      this.action.subscribe((action: PresignedUploaderAction) => {
         if (action === 'cancel') {
           cancelled = true;
 
@@ -217,7 +211,6 @@ export class PresignedUploaderComponent implements OnInit {
         observer.next(initial);
         xhr.send(file);
       } catch (e) {
-        console.log('start error: ', e);
         observer.complete();
       }
     });
@@ -230,11 +223,12 @@ export class PresignedUploaderComponent implements OnInit {
   private getPresignedUrl(endpoint: string, key: string, headers?: any): Observable<string> {
     const params = new URLSearchParams();
     params.set('key', key);
-    const options = new RequestOptions({ headers: headers, search: params });
+    
+    const options = new RequestOptions({ search: params });
+    
     if (headers) {
       options.headers = headers;
     }
-    console.log('getPresignUrl arguments: ', {endpoint: endpoint, key: key, headers: headers});
 
     return this.http.get(endpoint, options)
                     .map((res: Response) => res.text())
